@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('skills', function (Blueprint $table) {
+        Schema::create('applications_table', function (Blueprint $table) {
             $table->id();
             $table->string('skills_name');
             $table->boolean(column: 'status')->default(value: true);

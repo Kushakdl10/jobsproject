@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger( 'users_id');
             $table->foreign( columns: 'users_id')->references( columns: 'id')->on( table: 'users');
-            $table->timestamps(precision: 'recommended_at');
-            $table->boolean(column: status)->default(value: true);
-
+            $table->timestamps();
+            $table->boolean(column: 'status')->default(value: true);
+            $table->softDeletes();
         });
     }
 

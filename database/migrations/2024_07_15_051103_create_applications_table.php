@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign( columns: 'jobs_id')->references( columns: 'id')->on( table: 'jobs');
             $table->boolean(column: 'status')->default(value: true);
             $table->softDeletes();
-            $table->timestamps('applied_at');
+            $table->timestamps();
         });
     }
 

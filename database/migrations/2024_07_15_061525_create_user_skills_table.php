@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign( columns: 'skill_id')->references( columns: 'id')->on( table: 'job_skills');
             $table->unsignedBigInteger( 'users_id');
             $table->foreign( columns: 'users_id')->references( columns: 'id')->on( table: 'users');
-            $table->boolean(column: status)->default(value: true);
+            $table->boolean('status')->default(value: true);
             $table->timestamps();
         });
     }

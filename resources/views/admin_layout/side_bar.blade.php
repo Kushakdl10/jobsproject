@@ -67,7 +67,7 @@
                     <a href="{{route('product')}}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
-                            product
+                            Jobs
                            <span class="right badge badge-danger">New</span>
                         </p>
                     </a>
@@ -132,7 +132,7 @@
                         </li>
                     </ul>
                 </li>
-                
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
