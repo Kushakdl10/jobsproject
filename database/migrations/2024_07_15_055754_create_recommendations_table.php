@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('recommendations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger( 'users_id');
-            $table->foreign( columns: 'users_id')->references( columns: 'id')->on( table: 'users');
-            $table->timestamps();
+            $table->unsignedBigInteger( 'user_id');
+            $table->foreign( columns: 'user_id')->references( columns: 'id')->on( table: 'users');
             $table->boolean(column: 'status')->default(value: true);
+            $table->timestamps();
             $table->softDeletes();
         });
     }

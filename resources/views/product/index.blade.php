@@ -14,7 +14,8 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form>
+                        <form action="{{route('product.store')}}}" method="post">
+                            @csrf
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="jobs_title">Title</label>
@@ -22,7 +23,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="job_description">Description</label>
-                                    <input type="text" class="form-control" id="job_description" name="description" placeholder="Job description">
+                                    <input type="text" class="form-control" id="job_description" name="job_description" placeholder="Job description">
                                 </div>
                                 <div class="form-group">
                                     <label for="company">Company</label>

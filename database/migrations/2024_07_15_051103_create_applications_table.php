@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('applications', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger( 'user_id');
-            $table->foreign( columns: 'user_id')->references( columns: 'id')->on( table: 'users');
-            $table->unsignedBigInteger( 'jobs_id');
-            $table->foreign( columns: 'jobs_id')->references( columns: 'id')->on( table: 'jobs');
-            $table->boolean(column: 'status')->default(value: true);
+            $table->unsignedBigInteger('users_id');
+            $table->foreign('users_id')->references('id')->on('users');
+            $table->unsignedBigInteger('jobs_id');
+            $table->foreign('jobs_id')->references('id')->on('jobs');
+            $table->boolean('status')->default(true);
             $table->softDeletes();
             $table->timestamps();
         });

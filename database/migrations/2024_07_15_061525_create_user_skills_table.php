@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('user_skills', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger( 'skill_id');
-            $table->foreign( columns: 'skill_id')->references( columns: 'id')->on( table: 'job_skills');
+            $table->foreign( columns: 'skill_id')->references( columns: 'id')->on( table: 'skills');
             $table->unsignedBigInteger( 'users_id');
             $table->foreign( columns: 'users_id')->references( columns: 'id')->on( table: 'users');
             $table->boolean('status')->default(value: true);

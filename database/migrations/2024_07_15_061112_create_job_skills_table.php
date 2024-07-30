@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('job_skills', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger( 'job_id');
-            $table->foreign( columns: 'job_id')->references( columns: 'id')->on( table: 'jobs');
-            $table->unsignedBigInteger( 'skill_id');
-            $table->foreign( columns: 'skill_id')->references( columns: 'id')->on( table: 'skills');
-            $table->boolean('status')->default(value: true);
+            $table->unsignedBigInteger('job_id');
+            $table->foreign('job_id')->references('id')->on('jobs');
+            $table->unsignedBigInteger('skill_id');
+            $table->foreign('skill_id')->references('id')->on('skills');
+            $table->boolean('status')->default(true);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

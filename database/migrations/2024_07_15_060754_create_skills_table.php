@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('applications_table', function (Blueprint $table) {
+        Schema::create('skills', function (Blueprint $table) {
             $table->id();
             $table->string('skills_name');
             $table->boolean(column: 'status')->default(value: true);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
