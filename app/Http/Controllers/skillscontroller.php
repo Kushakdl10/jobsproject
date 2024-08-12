@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\skills;
 use Illuminate\Http\Request;
 
 class skillscontroller extends Controller
@@ -11,7 +12,8 @@ class skillscontroller extends Controller
      */
     public function index()
     {
-        //
+        $data= skills::all();
+        return view('skills.index',compact('data'));
     }
 
     /**
@@ -28,7 +30,15 @@ class skillscontroller extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        $data = skills::create([
+            'skills_name'=>$request->skills_name,
+            'status'=>$request->status
+        ]);
+        if ($data){
+            return view('skills.index')->with('success','skill added');
+        }else{
+            return redirect()->back()->with('error','something went wrong');
+        }
 
         //
     }

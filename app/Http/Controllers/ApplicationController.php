@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\applications;
+use App\Models\skills;
 use Illuminate\Http\Request;
 
 class ApplicationController extends Controller
@@ -11,7 +13,8 @@ class ApplicationController extends Controller
      */
     public function index()
     {
-
+        $data= Applications::all();
+        return view('Applications.index',compact('data'));
     }
 
     /**
@@ -27,7 +30,15 @@ class ApplicationController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        $data = skills::create([
+            'Applications_name'=>$request->Appplications_name,
+            'status'=>$request->status
+        ]);
+        if ($data){
+            return view('Applications.index')->with('success','Applications added');
+        }else{
+            return redirect()->back()->with('error','something went wrong');
+        }
     }
 
     /**

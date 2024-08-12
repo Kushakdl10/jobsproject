@@ -18,18 +18,21 @@
                             @csrf
                             <div class="card-body">
 
-                                <div class="form-group">
-                                    <label for="skills_Id">User Id</label>
-                                    <input type="text" class="form-control" id="skills_Id" name="skills_Id" placeholder=" Enter skills Id">
-                                </div>
+
                                 <div class="form-group">
                                     <label for="skills_name">skills name</label>
                                     <input type="text" class="form-control" id="skills_name" name="skills_name" placeholder="skills name">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="Status">Status</label>
-                                    <input type="text" class="form-control" id="Status" name="Status" placeholder="Status">
+
+                                    <label for="transaction_type">Status</label>
+
+                                    <select name="status" id="status" class="form-control">
+                                        <option value="begginer">begginer</option>
+                                        <option value="intermediate">intermediate</option>
+                                        <option value="proffesional">proffesional</option>
+                                    </select>
                                 </div>
 
                                 {{--                                <div class="form-group">--}}

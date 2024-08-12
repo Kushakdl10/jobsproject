@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\applications;
 use Illuminate\Foundation\Http\FormRequest;
 
 class Applicationrequest extends FormRequest
@@ -11,7 +12,7 @@ class Applicationrequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,6 +23,8 @@ class Applicationrequest extends FormRequest
     public function rules(): array
     {
         return [
+            'Appplications_name'=>'required',
+            'status'=>'required',
             //
         ];
     }

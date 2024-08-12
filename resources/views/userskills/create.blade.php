@@ -27,10 +27,10 @@
                                     <input type="text" class="form-control" id="user_Id" name="user_Id" placeholder="user Id">
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="Skills Id ">Status</label>
-                                    <input type="text" class="form-control" id="Skills Id" name="Skills Id" placeholder="Skills Id">
-                                </div>
+{{--                                <div class="form-group">--}}
+{{--                                    <label for="Skills Id ">Status</label>--}}
+{{--                                    <input type="text" class="form-control" id="Skills Id" name="Skills Id" placeholder="Skills Id">--}}
+{{--                                </div>--}}
 
                                 <div class="form-group">
                                     <label for="Status">Status</label>

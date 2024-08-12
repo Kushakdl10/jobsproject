@@ -19,7 +19,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="Application_Id">Application Id</label>
-                                    <input type="text" class="form-control" id="Application_Id" name="Aplication_Id" placeholder=" Enter Application Id">
+                                    <input type="text" class="form-control" id="Application_Id" name="Application_Id" placeholder=" Enter Application Id">
                                 </div>
                                 <div class="form-group">
                                     <label for="User_Id">User Id</label>
