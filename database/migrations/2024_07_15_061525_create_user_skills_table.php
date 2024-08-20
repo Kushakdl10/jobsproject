@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_skills', function (Blueprint $table) {
+        Schema::create('userSkills', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger( 'skill_id');
-            $table->foreign( columns: 'skill_id')->references( columns: 'id')->on( table: 'skills');
+            $table->foreign( columns: 'skill_id')->references( columns: 'id')->on( table: 'Skills');
             $table->unsignedBigInteger( 'users_id');
             $table->foreign( columns: 'users_id')->references( columns: 'id')->on( table: 'users');
             $table->boolean('status')->default(value: true);
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_skills');
+        Schema::dropIfExists('userSkills');
     }
 };

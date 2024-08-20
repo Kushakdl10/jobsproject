@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class jobskillscontroller extends Controller
+class jobSkillscontroller extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-
+        $data= jobskills::all();
+        return view('jobSkills.index',compact('data'));
     }
 
     /**
@@ -19,7 +20,7 @@ class jobskillscontroller extends Controller
      */
     public function create()
     {
-        return view('jobskills.create');
+        return view('jobSkills.create');
         //
     }
 
@@ -28,9 +29,18 @@ class jobskillscontroller extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        $data = skills::create([
+            'job_id'=>$request->job_id,
+            'skill_id'=>$request->skill_id,
+            'status'=>$request->status
+        ]);
+        if ($data){
+            return redirect()->route('jobSkills.index');
+//            return view('Applications.index')->with('success','Applications added');
+        }else{
+            return redirect()->back()->with('error','something went wrong');
+        }
 
-        //
     }
 
     /**

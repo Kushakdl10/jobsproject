@@ -11,7 +11,7 @@
                 <!-- general form elements -->
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Skills</h3>
+                        <h3 class="card-title">Application name</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
@@ -22,6 +22,9 @@
                                         <thead>
                                         <tr>
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending">ID</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending">users_id</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending">jobs_id</th>
+
                                             <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column descending" aria-sort="ascending">Application Name</th>
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">status</th>
                                         {{--                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Engine version</th>--}}
@@ -33,7 +36,8 @@
                                             <tr class="odd">
                                                 <td class="dtr-control sorting_1" >{{$cat->id}}</td>
 
-                                                <td>{{$cat->skills_name}}</td>
+                                                <td>{{$cat->users_id}}</td>
+                                                <td>{{$cat->jobs_id}}</td>
                                                 <td>{{$cat->status}}</td>
                                         @endforeach
                                         </tbody>

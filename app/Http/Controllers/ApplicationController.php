@@ -6,7 +6,7 @@ use App\Models\applications;
 use App\Models\skills;
 use Illuminate\Http\Request;
 
-class ApplicationController extends Controller
+class applicationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,11 +31,12 @@ class ApplicationController extends Controller
     public function store(Request $request)
     {
         $data = skills::create([
-            'Applications_name'=>$request->Appplications_name,
-            'status'=>$request->status
+            'users_id'=>$request->users_id,
+            'jobs_id'=>$request->jobs_id
         ]);
         if ($data){
-            return view('Applications.index')->with('success','Applications added');
+            return redirect()->route('Applications.index');
+//            return view('Applications.index')->with('success','Applications added');
         }else{
             return redirect()->back()->with('error','something went wrong');
         }

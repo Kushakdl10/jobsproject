@@ -23,7 +23,8 @@ class Applicationrequest extends FormRequest
     public function rules(): array
     {
         return [
-            'Appplications_name'=>'required',
+            'users_id'=>'required',
+            'jobs_id'=>'required',
             'status'=>'required',
             //
         ];

@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\skills;
+use App\Models\Skills;
+use App\Http\Requests\SkillsRequest;
 use Illuminate\Http\Request;
 
-class skillscontroller extends Controller
+class SkillsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data= skills::all();
-        return view('skills.index',compact('data'));
+        $data = Skills::all();
+        return view('Skills.index', compact('data'));
     }
 
     /**
@@ -21,27 +22,28 @@ class skillscontroller extends Controller
      */
     public function create()
     {
-        return view('skills.create');
-        //
+        return view('Skills.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SkillsRequest $request) // Use the form request class for validation
     {
-        $data = skills::create([
-            'skills_name'=>$request->skills_name,
-            'status'=>$request->status
+        $data = Skills::create([
+            'skills_name' => $request->skills_name,
+            'status' => $request->status
         ]);
-        if ($data){
-            return view('skills.index')->with('success','skill added');
-        }else{
-            return redirect()->back()->with('error','something went wrong');
-        }
 
-        //
+        if ($data) {
+            return redirect()->route('Skills.index')->with('success', 'Skill added successfully.');
+        } else {
+            return redirect()->back()->with('error', 'Something went wrong.');
+        }
     }
+
+    // Other methods (show, edit, update, destroy) can remain as they are, or you can implement them if needed
+}
 
     /**
      * Display the specified resource.

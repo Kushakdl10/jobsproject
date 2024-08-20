@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class jobskillsrequest extends FormRequest
+class jobSkillsrequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class jobskillsrequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'job_id'=>'required',
+            'skill_id'=>'required',
+            'status'=>'required',
         ];
     }
 }

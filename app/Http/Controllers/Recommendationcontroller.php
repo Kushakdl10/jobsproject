@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\recommendation;
+use App\Models\skills;
 use Illuminate\Http\Request;
 
-class Recommendationcontroller extends Controller
+class recommendationcontroller extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $data= recommendation::all();
+        return view('recommendation.index',compact('data'));
     }
 
     /**
@@ -28,7 +31,16 @@ class Recommendationcontroller extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        $data = recommendation::create([
+            'user_id'=>$request->user_id,
+            'status'=>$request->status
+        ]);
+        if ($data){
+            return redirect()->route('recommmendation.index');
+//            return view('Skills.index')->with('success','skill added');
+        }else{
+            return redirect()->back()->with('error','something went wrong');
+        }
 
         //
     }

@@ -14,7 +14,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{route('jobskills.store')}}" method="post">
+                        <form action="{{route('jobSkills.store')}}" method="post">
                             @csrf
                             <div class="card-body">
 

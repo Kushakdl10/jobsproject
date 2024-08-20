@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\skills;
 use Illuminate\Http\Request;
 
-class userskillscontroller extends Controller
+class userSkillscontroller extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $data= userskills::all();
+        return view('userSkills.index',compact('data'));
     }
 
     /**
@@ -19,7 +21,7 @@ class userskillscontroller extends Controller
      */
     public function create()
     {
-        return view('userskills.create');
+        return view('userSkills.create');
         //
     }
 
@@ -28,6 +30,18 @@ class userskillscontroller extends Controller
      */
     public function store(Request $request)
     {
+        $data = userskills::create([
+            'skill_id'=>$request->skill_id,
+            'users_id'=>$request->users_id,
+            'status'=>$request->status
+        ]);
+        if ($data){
+            return redirect()->route('userSkills.index');
+//            return view('Skills.index')->with('success','skill added');
+        }else{
+            return redirect()->back()->with('error','something went wrong');
+        }
+
         //
     }
 
@@ -36,7 +50,7 @@ class userskillscontroller extends Controller
      */
     public function show(string $id)
     {
-        dd($request->all());
+
 
         //
     }

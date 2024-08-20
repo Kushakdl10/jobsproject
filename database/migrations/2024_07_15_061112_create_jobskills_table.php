@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('job_skills', function (Blueprint $table) {
+        Schema::create('jobSkills', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('job_id');
             $table->foreign('job_id')->references('id')->on('jobs');
             $table->unsignedBigInteger('skill_id');
-            $table->foreign('skill_id')->references('id')->on('skills');
+            $table->foreign('skill_id')->references('id')->on('Skills');
             $table->boolean('status')->default(true);
             $table->timestamps();
             $table->softDeletes();
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('job_skills');
+        Schema::dropIfExists('jobSkills');
     }
 };

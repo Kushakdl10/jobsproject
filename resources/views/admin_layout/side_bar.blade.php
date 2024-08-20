@@ -152,13 +152,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('skills')}}" class="nav-link">
+                            <a href="{{route('Skills')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Create</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('skills.index')}}" class="nav-link">
+                            <a href="{{route('Skills.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>List</p>
                             </a>
@@ -177,13 +177,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('jobskills')}}" class="nav-link">
+                            <a href="{{route('JobSkills')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Create</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('jobskills.index')}}" class="nav-link">
+                            <a href="{{route('JobSkills.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>List</p>
                             </a>
@@ -203,13 +203,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('userskills')}}" class="nav-link">
+                            <a href="{{route('UserSkills')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Create</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('userskills.index')}}" class="nav-link">
+                            <a href="{{route('UserSkills.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>List</p>
                             </a>
