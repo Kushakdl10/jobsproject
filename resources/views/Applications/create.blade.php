@@ -6,21 +6,21 @@
         <div class="container-fluid">
             <div class="row">
                 <!-- left column -->
-                <div class="col-md-6">
+                <div class="col-md-9">
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Quick Example</h3>
+                            <h3 class="card-title">Applications</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{route('applications.store')}}" method="post">
+                        <form action="{{route('applications.store')}}"  method="post">
                             @csrf
                             <div class="card-body">
-                                <div class="form-group">
-                                    <label for="Application_Id">Application Id</label>
-                                    <input type="text" class="form-control" id="Application_Id" name="Application_Id" placeholder=" Enter Application Id">
-                                </div>
+{{--                                <div class="form-group">--}}
+{{--                                    <label for="Application_Id">Application Id</label>--}}
+{{--                                    <input type="text" class="form-control" id="application_id" name="Application_Id" placeholder=" Enter Application Id">--}}
+{{--                                </div>--}}
                                 <div class="form-group">
                                     <label for="User_Id">User Id</label>
                                     <input type="text" class="form-control" id="User_Id" name="User_Id" placeholder=" Enter User Id">
@@ -30,10 +30,10 @@
                                     <input type="text" class="form-control" id="Job_Id" name="Job_Id" placeholder="Enter Job Id">
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="Applied_At">Applied At</label>
-                                    <input type="text" class="form-control" id="Applied_At" name="Applied_At" placeholder="Applied At">
-                                </div>
+{{--                                <div class="form-group">--}}
+{{--                                    <label for="Applied_At">Applied At</label>--}}
+{{--                                    <input type="text" class="form-control" id="Applied_At" name="Applied_At" placeholder="Applied At">--}}
+{{--                                </div>--}}
 
                                 <div class="form-group">
                                     <label for="Status">Status</label>

@@ -16,7 +16,7 @@ Route::get('product-index',[\App\Http\Controllers\ProductController::class,'inde
 
 
 Route::get('/Applications',[\App\Http\Controllers\ApplicationController::class,'create'])->name(name:'Applications');
-Route::post('/Applications-store',[\App\Http\Controllers\ApplicationController::class,'store'])->name(name:'Applications.store');
+Route::post('/Applications-store',[\App\Http\Controllers\ApplicationController::class,'store'])->name(name:'applications.store');
 Route::get('/Applications-index',[\App\Http\Controllers\ApplicationController::class,'index'])->name(name:'Applications.index');
 
 Route::get('/Recommendation',[\App\Http\Controllers\Recommendationcontroller::class,'create'])->name(name:'Recommendation');
@@ -32,5 +32,5 @@ Route::post('/JobSkills-store',[\App\Http\Controllers\JobSkillscontroller::class
 Route::get('/JobSkills-index',[\App\Http\Controllers\JobSkillscontroller::class,'index'])->name(name:'JobSkills.index');
 
 Route::get('/UserSkills',[\App\Http\Controllers\UserSkillscontroller::class,'create'])->name(name:'UserSkills');
-Route::post('/UserSkills-store',[\App\Http\Controllers\UserSkillscontroller::class,'store'])->name(name:'UserSkills.store');
+Route::post('/UserSkills-store',[\App\Http\Controllers\UserSkillscontroller::class,'store'])->name(name:'userSkills.store');
 Route::get('/UserSkills-index',[\App\Http\Controllers\UserSkillscontroller::class,'index'])->name(name:'UserSkills.index');

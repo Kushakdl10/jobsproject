@@ -36,7 +36,6 @@ class jobSkillscontroller extends Controller
         ]);
         if ($data){
             return redirect()->route('jobSkills.index');
-//            return view('Applications.index')->with('success','Applications added');
         }else{
             return redirect()->back()->with('error','something went wrong');
         }

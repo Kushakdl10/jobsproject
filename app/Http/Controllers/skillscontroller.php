@@ -43,12 +43,11 @@ class SkillsController extends Controller
     }
 
     // Other methods (show, edit, update, destroy) can remain as they are, or you can implement them if needed
-}
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         //
     }
@@ -56,7 +55,7 @@ class SkillsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit( $id)
     {
         //
     }
@@ -64,7 +63,7 @@ class SkillsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request,  $id)
     {
         //
     }

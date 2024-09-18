@@ -30,6 +30,7 @@ class applicationController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
         $data = skills::create([
             'users_id'=>$request->users_id,
             'jobs_id'=>$request->jobs_id
