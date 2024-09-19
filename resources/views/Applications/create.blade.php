@@ -22,13 +22,30 @@
 {{--                                    <input type="text" class="form-control" id="application_id" name="Application_Id" placeholder=" Enter Application Id">--}}
 {{--                                </div>--}}
                                 <div class="form-group">
-                                    <label for="User_Id">User Id</label>
-                                    <input type="text" class="form-control" id="User_Id" name="User_Id" placeholder=" Enter User Id">
+                                    <label for="Status">User</label>
+                                    <select name="user_id" id="user_id" class="form-control">
+                                        @foreach($user as $i=> $u)
+                                        <option value="{{$i}}">{{$u}}</option>
+
+                                        @endforeach
+                                    </select>
                                 </div>
+{{--                                <div class="form-group">--}}
+{{--                                    <label for="Job_Id">Job Id</label>--}}
+{{--                                    <input type="text" class="form-control" id="Job_Id" name="Job_Id" placeholder="Enter Job Id">--}}
+{{--                                </div>--}}
+
                                 <div class="form-group">
-                                    <label for="Job_Id">Job Id</label>
-                                    <input type="text" class="form-control" id="Job_Id" name="Job_Id" placeholder="Enter Job Id">
+                                    <label for="Status">Job</label>
+                                    <select name="job_id" id="job_id" class="form-control">
+                                        {{$jobs}}
+                                        @foreach($jobs as $id=>$j)
+                                            <option value="{{$id}}">{{$j}}</option>
+
+                                        @endforeach
+                                    </select>
                                 </div>
+
 
 {{--                                <div class="form-group">--}}
 {{--                                    <label for="Applied_At">Applied At</label>--}}
@@ -37,7 +54,11 @@
 
                                 <div class="form-group">
                                     <label for="Status">Status</label>
-                                    <input type="text" class="form-control" id="Status" name="Status" placeholder="Status">
+                                    <select name="status" id="status" class="form-control">
+                                        <option value=0>begginer</option>
+                                        <option value=1>intermediate</option>
+                                        <option value=2>proffesional</option>
+                                    </select>
                                 </div>
 
                                 {{--                                <div class="form-group">--}}

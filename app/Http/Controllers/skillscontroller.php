@@ -28,7 +28,7 @@ class SkillsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(SkillsRequest $request) // Use the form request class for validation
+    public function store(Request $request) // Use the form request class for validation
     {
         $data = Skills::create([
             'skills_name' => $request->skills_name,

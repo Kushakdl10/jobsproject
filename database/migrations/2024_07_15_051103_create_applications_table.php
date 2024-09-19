@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('users_id');
             $table->foreign('users_id')->references('id')->on('users');
-            $table->unsignedBigInteger('jobs_id');
-            $table->foreign('jobs_id')->references('id')->on('jobs');
             $table->boolean('status')->default(true);
             $table->softDeletes();
             $table->timestamps();

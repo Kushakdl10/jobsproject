@@ -11,10 +11,12 @@ class Job extends Model
 
     protected $fillable = [
         'title',
-        'name',
+        'description',
         'company',
         'location',
         'user_id',
         'status'
     ];
+
+    protected $table='job';
 }

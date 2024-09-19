@@ -12,7 +12,7 @@ class userSkillscontroller extends Controller
      */
     public function index()
     {
-        $data= userskills::all();
+        $data= userSkills::all();
         return view('userSkills.index',compact('data'));
     }
 
@@ -30,7 +30,7 @@ class userSkillscontroller extends Controller
      */
     public function store(Request $request)
     {
-        $data = userskills::create([
+        $data = userSkills::create([
             'skill_id'=>$request->skill_id,
             'users_id'=>$request->users_id,
             'status'=>$request->status

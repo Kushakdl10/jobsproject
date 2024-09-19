@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row">
                 <!-- left column -->
-                <div class="col-md-6">
+                <div class="col-md-9">
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <div class="card-header">
@@ -34,7 +34,11 @@
 
                                 <div class="form-group">
                                     <label for="Status">Status</label>
-                                    <input type="text" class="form-control" id="Status" name="Status" placeholder="Status">
+                                    <select name="status" id="status" class="form-control">
+                                        <option value="begginer">begginer</option>
+                                        <option value="intermediate">intermediate</option>
+                                        <option value="proffesional">proffesional</option>
+                                    </select>
                                 </div>
 
                                 {{--                                <div class="form-group">--}}

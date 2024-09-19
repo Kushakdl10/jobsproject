@@ -6,13 +6,13 @@
         <div class="container-fluid">
             <div class="row">
                 <!-- left column -->
-                <div class="col-md-6">
+                <div class="col-md-9">
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title">Job</h3>
                         </div>
-                        <form action="{{route('product.store')}}}" method="post">
+                        <form action="{{route('product.store')}}" method="post">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\applications;
+use App\Models\Job;
+use App\Models\Skills;
 use Illuminate\Http\Request;
 
 class productcontroller extends Controller
@@ -11,7 +14,8 @@ class productcontroller extends Controller
      */
     public function index()
     {
-        return view('product.index');
+        $data= Job::all();
+        return view('product.index',compact('data'));
     }
 
     /**
@@ -28,7 +32,19 @@ class productcontroller extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+
+        $data = Job::create([
+            'title'=>$request->title,
+            'description'=>$request->job_description,
+            'company'=>$request->company,
+            'location'=>$request->location
+        ]);
+        if ($data){
+            return redirect()->route('product.index');
+//            return view('product.index')->with('success','product added');
+        }else{
+            return redirect()->back()->with('error','something went wrong');
+        }
     }
 
     /**

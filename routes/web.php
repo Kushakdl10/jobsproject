@@ -27,10 +27,13 @@ Route::get('/Skills',[\App\Http\Controllers\SkillsController::class,'create'])->
 Route::post('/Skills-store',[\App\Http\Controllers\SkillsController::class,'store'])->name('Skills.store');
 Route::get('/Skills-index',[\App\Http\Controllers\SkillsController::class,'index'])->name('Skills.index');
 
-Route::get('/jobSkills',[\App\Http\Controllers\JobSkillscontroller::class,'create'])->name(name:'JobSkills');
-Route::post('/JobSkills-store',[\App\Http\Controllers\JobSkillscontroller::class,'store'])->name(name:'jobSkills.store');
-Route::get('/JobSkills-index',[\App\Http\Controllers\JobSkillscontroller::class,'index'])->name(name:'JobSkills.index');
+Route::get('/jobSkills',[\App\Http\Controllers\jobskillscontroller::class,'create'])->name(name:'JobSkills');
+Route::post('/JobSkills-store',[\App\Http\Controllers\jobskillscontroller::class,'store'])->name(name:'jobSkills.store');
+Route::get('/JobSkills-index',[\App\Http\Controllers\jobskillscontroller::class,'index'])->name(name:'JobSkills.index');
 
 Route::get('/UserSkills',[\App\Http\Controllers\UserSkillscontroller::class,'create'])->name(name:'UserSkills');
 Route::post('/UserSkills-store',[\App\Http\Controllers\UserSkillscontroller::class,'store'])->name(name:'userSkills.store');
-Route::get('/UserSkills-index',[\App\Http\Controllers\UserSkillscontroller::class,'index'])->name(name:'UserSkills.index');
+Route::get('/UserSkills-index',[\App\Http\Controllers\UserSkillscontroller::class,'index'])->name(name:'userSkills.index');
+
+
+Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');

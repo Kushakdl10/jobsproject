@@ -13,4 +13,5 @@ class jobSkills extends Model
         'skill_id',
         'status'
     ];
+    protected $table = 'jobSkills';
 }

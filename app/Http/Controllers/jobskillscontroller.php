@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\applications;
+use App\Models\Job;
+use App\Models\jobSkills;
+use App\Models\Skills;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class jobSkillscontroller extends Controller
+class jobskillscontroller extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data= jobskills::all();
+        $data= JobSkills::all();
         return view('jobSkills.index',compact('data'));
     }
 
@@ -20,8 +25,9 @@ class jobSkillscontroller extends Controller
      */
     public function create()
     {
-        return view('jobSkills.create');
-        //
+        $skills=Skills::all()->pluck('skills_name','id');
+        $jobs=Job::all()->pluck('title','id');
+        return view('jobskills.create',compact('skills','jobs'));
     }
 
     /**
@@ -29,13 +35,13 @@ class jobSkillscontroller extends Controller
      */
     public function store(Request $request)
     {
-        $data = skills::create([
+        $data = JobSkills::create([
             'job_id'=>$request->job_id,
             'skill_id'=>$request->skill_id,
             'status'=>$request->status
         ]);
         if ($data){
-            return redirect()->route('jobSkills.index');
+            return redirect()->route('JobSkills.index');
         }else{
             return redirect()->back()->with('error','something went wrong');
         }
@@ -47,7 +53,8 @@ class jobSkillscontroller extends Controller
      */
     public function show(string $id)
     {
-        //
+        $jobskills=jobSkills::find($id);
+        return view('jobskills.edit',compact('jobskills'));
     }
 
     /**

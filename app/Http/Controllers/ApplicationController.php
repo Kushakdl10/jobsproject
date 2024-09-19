@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\applications;
+use App\Models\Job;
 use App\Models\skills;
+use App\Models\User;
+use Illuminate\Console\Application;
 use Illuminate\Http\Request;
 
 class applicationController extends Controller
@@ -13,7 +16,7 @@ class applicationController extends Controller
      */
     public function index()
     {
-        $data= Applications::all();
+        $data= Applications::with('User','Job')->get();
         return view('Applications.index',compact('data'));
     }
 
@@ -22,7 +25,9 @@ class applicationController extends Controller
      */
     public function create()
     {
-        return view('Applications.create');
+        $user=User::all()->pluck('name','id');
+        $jobs=Job::all()->pluck('title','id');
+        return view('Applications.create',compact('user','jobs'));
     }
 
     /**
@@ -30,10 +35,10 @@ class applicationController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
-        $data = skills::create([
-            'users_id'=>$request->users_id,
-            'jobs_id'=>$request->jobs_id
+        $data = applications::create([
+            'users_id'=>$request->user_id,
+            'jobs_id'=>$request->job_id,
+            'status'=>$request->status,
         ]);
         if ($data){
             return redirect()->route('Applications.index');
