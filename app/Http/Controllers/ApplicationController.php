@@ -9,15 +9,15 @@ use App\Models\User;
 use Illuminate\Console\Application;
 use Illuminate\Http\Request;
 
-class applicationController extends Controller
+class ApplicationController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data= Applications::with('User','Job')->get();
-        return view('Applications.index',compact('data'));
+        $data = Applications::with('User', 'Job')->get();
+        return view('Applications.index', compact('data'));
     }
 
     /**
@@ -25,9 +25,9 @@ class applicationController extends Controller
      */
     public function create()
     {
-        $user=User::all()->pluck('name','id');
-        $jobs=Job::all()->pluck('title','id');
-        return view('Applications.create',compact('user','jobs'));
+        $user = User::all()->pluck('name', 'id');
+        $jobs = Job::all()->pluck('title', 'id');
+        return view('Applications.create', compact('user', 'jobs'));
     }
 
     /**
@@ -36,24 +36,25 @@ class applicationController extends Controller
     public function store(Request $request)
     {
         $data = applications::create([
-            'users_id'=>$request->user_id,
-            'jobs_id'=>$request->job_id,
-            'status'=>$request->status,
+            'users_id' => $request->user_id,
+            'jobs_id' => $request->job_id,
+            'status' => $request->status,
         ]);
-        if ($data){
+        if ($data) {
             return redirect()->route('Applications.index');
 //            return view('Applications.index')->with('success','Applications added');
-        }else{
-            return redirect()->back()->with('error','something went wrong');
+        } else {
+            return redirect()->back()->with('error', 'something went wrong');
         }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $Applications = Applications::find($id);
+        return view('Applications.edit', compact('Applications'));
     }
 
     /**
@@ -70,14 +71,26 @@ class applicationController extends Controller
     public function update(Request $request, string $id)
     {
 
-        //
+        $Applications = Application::find($request->id);
+        $Applications->update([
+            'users_id' => $request->user_id,
+            'jobs_id' => $request->job_id,
+            'status' => $request->status,
+        ]);
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
+
     {
-        //
+        $Applications = Applications::findOrFail($id);
+        $Applications->delete();
+
+        return redirect()->route('Applications.index')->with('success', 'Applications deleted successfully.');
+
     }
 }
+

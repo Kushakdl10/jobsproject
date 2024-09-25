@@ -14,26 +14,28 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{route('Applications.store')}}"  method="post">
+                        <form action="{{route('Applications.update',$Applications->id)}}"  method="post">
                             @csrf
+                            @method('PUT')
+                            <input type="hidden" class="form-control" id="id" name="id"  value="{{ ( $Applications->id) }}">
                             <div class="card-body">
-{{--                                <div class="form-group">--}}
-{{--                                    <label for="Application_Id">Application Id</label>--}}
-{{--                                    <input type="text" class="form-control" id="application_id" name="Application_Id" placeholder=" Enter Application Id">--}}
-{{--                                </div>--}}
+                                {{--                                <div class="form-group">--}}
+                                {{--                                    <label for="Application_Id">Application Id</label>--}}
+                                {{--                                    <input type="text" class="form-control" id="application_id" name="Application_Id" placeholder=" Enter Application Id">--}}
+                                {{--                                </div>--}}
                                 <div class="form-group">
                                     <label for="Status">User</label>
-                                    <select name="user_id" id="user_id" class="form-control">
+                                    <select name="user_id" id="user_id" class="form-control" >
                                         @foreach($user as $i=> $u)
-                                        <option value="{{$i}}">{{$u}}</option>
+                                            <option value="{{$i}}">{{$u}}</option>
 
                                         @endforeach
                                     </select>
                                 </div>
-{{--                                <div class="form-group">--}}
-{{--                                    <label for="Job_Id">Job Id</label>--}}
-{{--                                    <input type="text" class="form-control" id="Job_Id" name="Job_Id" placeholder="Enter Job Id">--}}
-{{--                                </div>--}}
+                                {{--                                <div class="form-group">--}}
+                                {{--                                    <label for="Job_Id">Job Id</label>--}}
+                                {{--                                    <input type="text" class="form-control" id="Job_Id" name="Job_Id" placeholder="Enter Job Id">--}}
+                                {{--                                </div>--}}
 
                                 <div class="form-group">
                                     <label for="Status">Job</label>
@@ -47,10 +49,10 @@
                                 </div>
 
 
-{{--                                <div class="form-group">--}}
-{{--                                    <label for="Applied_At">Applied At</label>--}}
-{{--                                    <input type="text" class="form-control" id="Applied_At" name="Applied_At" placeholder="Applied At">--}}
-{{--                                </div>--}}
+                                {{--                                <div class="form-group">--}}
+                                {{--                                    <label for="Applied_At">Applied At</label>--}}
+                                {{--                                    <input type="text" class="form-control" id="Applied_At" name="Applied_At" placeholder="Applied At">--}}
+                                {{--                                </div>--}}
 
                                 <div class="form-group">
                                     <label for="Status">Status</label>

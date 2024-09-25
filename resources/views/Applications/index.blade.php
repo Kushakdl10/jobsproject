@@ -32,8 +32,10 @@
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending">jobs</th>
 {{--                                            <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column descending" aria-sort="ascending">Application Name</th>--}}
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">status</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Action</th>
                                         {{--                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Engine version</th>--}}
                                         {{--                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">CSS grade</th></tr>--}}
+
                                         </thead>
                                         <tbody>
                                         <tr class="odd">
@@ -41,9 +43,22 @@
                                             <tr class="odd">
                                                 <td class="dtr-control sorting_1" >{{$cat->id}}</td>
 
-                                                <td>{{$cat->User->name}}</td>
-                                                <td>{{$cat->Job->title}}</td>
+                                                <td>{{$cat->user->name}}</td>
+                                                <td>{{$cat->job->title}}</td>
                                                 <td>{{$cat->status}}</td>
+
+                                                <td>
+
+                                                    <a  href="{{route('Applications.show',$cat->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-pencil-alt" aria-hidden="true"></i></a>
+
+                                                    <form action="{{route('Applications.destroy',$cat->id)}}" method="post" class="d-inline">
+                                                        <input type="hidden" name="_method" value="delete" />
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></button>
+
+                                                    </form>
+                                                </td>
+                                            </tr>
                                         @endforeach
                                         </tbody>
                                         <tfoot>

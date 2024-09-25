@@ -14,18 +14,17 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{route('jobSkills.store')}}" method="post">
+                        <form action="{{route('jobSkills.update', $jobskills->id)}}" method="post">
                             @csrf
+                            @method('PUT')
                             <div class="card-body">
 
                                 <div class="form-group">
                                     <label for="job_id">jobs</label>
-{{--                                    {{$jobs}}--}}
-
                                     <select name="job_id" id="job_id" class="form-control">
                                         <option> Select Options</option>
-                                        @foreach ( $jobs as $id => $job )
-                                            <option value={{ $id }}>{{ $job }}</option>
+                                        @foreach ( $data as $id => $job )
+                                            <option value="{{ $id }}">{{ $job }}</option>
                                         @endforeach
                                     </select>
                                     @error('job_id')
@@ -34,18 +33,18 @@
                                 </div>
 
 
-                                <div class="form-group">
-                                    <label for="skill_id">Skills</label>
-                                    <select name="skill_id" id="skill_id" class="form-control">
-                                        <option> Select Options</option>
-                                        @foreach ( $skills as $id => $skill )
-                                            <option value={{ $id }}>{{ $skill }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('skill_id')
-                                    <p class="text-danger">  This Category is a required filed</p>
-                                    @enderror
-                                </div>
+{{--                                <div class="form-group">--}}
+{{--                                    <label for="skill_id">Skills</label>--}}
+{{--                                    <select name="skill_id" id="skill_id" class="form-control">--}}
+{{--                                        <option> Select Options</option>--}}
+{{--                                        @foreach ( $data as $id => $skill )--}}
+{{--                                            <option value="{{ $id }}">{{ $skill }} </option>--}}
+{{--                                        @endforeach--}}
+{{--                                    </select>--}}
+{{--                                    @error('skill_id')--}}
+{{--                                    <p class="text-danger">  This Category is a required filed</p>--}}
+{{--                                    @enderror--}}
+{{--                                </div>--}}
 
 
                                 <div class="form-group">
@@ -57,11 +56,11 @@
                                     </select>
                                 </div>
 
-                                 </div>
+                            </div>
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">update</button>
                             </div>
                         </form>
                     </div>

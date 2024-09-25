@@ -12,4 +12,6 @@ class recommendation extends Model
         'user_id',
         'status'
     ];
+
+
 }

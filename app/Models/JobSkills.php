@@ -14,4 +14,17 @@ class jobSkills extends Model
         'status'
     ];
     protected $table = 'jobSkills';
+
+
+    public function Jobs()
+    {
+        return $this->belongsTo('App\Models\Job', 'job_id');
+
+    }
+
+     public function Skills()
+     {
+         return $this->belongsTo('App\Models\Skills', 'skill_id');
+
+     }
 }

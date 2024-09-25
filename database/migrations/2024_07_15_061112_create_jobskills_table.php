@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('jobSkills', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('job_id');
-            $table->foreign('job_id')->references('id')->on('jobs');
+//            $table->unsignedBigInteger('job_id');
+//            $table->foreign('job_id')->references('id')->on('job');
             $table->unsignedBigInteger('skill_id');
             $table->foreign('skill_id')->references('id')->on('Skills');
             $table->boolean('status')->default(true);

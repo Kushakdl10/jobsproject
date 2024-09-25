@@ -18,13 +18,32 @@
                             @csrf
                             <div class="card-body">
 
+
                                 <div class="form-group">
-                                    <label for="userskills_Id">Userskills Id</label>
-                                    <input type="text" class="form-control" id="userskills_Id" name="userskills_Id" placeholder=" Enter userskills Id">
+                                    <label for="skill_id">Skills</label>
+                                    <select name="skill_id" id="skill_id" class="form-control">
+                                        <option> Select Options</option>
+                                        @foreach ( $user as $id => $skill )
+                                            <option value={{ $id }}>{{ $skill }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('skill_id')
+                                    <p class="text-danger">  This Category is a required filed</p>
+                                    @enderror
                                 </div>
+
+
                                 <div class="form-group">
-                                    <label for="user_Id">User Id</label>
-                                    <input type="text" class="form-control" id="user_Id" name="user_Id" placeholder="user Id">
+                                    <label for="user_id">Skills</label>
+                                    <select name="user_id" id="user_id" class="form-control">
+                                        <option> Select Options</option>
+                                        @foreach ( $skills as $id => $skill )
+                                            <option value={{ $id }}>{{ $skill }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('user_id')
+                                    <p class="text-danger">  This Category is a required filed</p>
+                                    @enderror
                                 </div>
 
 {{--                                <div class="form-group">--}}
@@ -35,9 +54,9 @@
                                 <div class="form-group">
                                     <label for="Status">Status</label>
                                     <select name="status" id="status" class="form-control">
-                                        <option value="begginer">begginer</option>
-                                        <option value="intermediate">intermediate</option>
-                                        <option value="proffesional">proffesional</option>
+                                        <option value=0>begginer</option>
+                                        <option value=1>intermediate</option>
+                                        <option value=2>proffesional</option>
                                     </select>
                                 </div>
 

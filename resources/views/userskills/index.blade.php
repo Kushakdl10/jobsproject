@@ -11,7 +11,7 @@
                 <!-- general form elements -->
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Application name</h3>
+                        <h3 class="card-title">users skills</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
@@ -25,8 +25,9 @@
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending">user_id</th>
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending">skill_id</th>
 
-                                            <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column descending" aria-sort="ascending">Application Name</th>
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">status</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Action</th>
+
                                         {{--                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Engine version</th>--}}
                                         {{--                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">CSS grade</th></tr>--}}
                                         </thead>
@@ -36,9 +37,31 @@
                                             <tr class="odd">
                                                 <td class="dtr-control sorting_1" >{{$cat->id}}</td>
 
-                                                <td>{{$cat->skill_id}}</td>
-                                                <td>{{$cat->users_id}}</td>
+                                                <td>{{$cat->User->name}}</td>
+                                                <td>{{$cat->Skill->skills_name}}</td>
                                                 <td>{{$cat->status}}</td>
+                                                <td>
+
+                                                    <a  href="{{route('UserSkills.show',$cat->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-pencil-alt" aria-hidden="true"></i></a>
+
+                                                    <form action="{{route('UserSkills.destroy',$cat->id)}}" method="post" class="d-inline">
+                                                        <input type="hidden" name="_method" value="delete" />
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></button>
+
+                                                    </form>
+                                                </td>
+{{--                                                <td>--}}
+{{--                                                    @if($cat->status ===1)--}}
+{{--                                                        <div class="text-success">Active</div>--}}
+{{--                                                    @endif--}}
+
+{{--                                                    @if($cat->status ===0)--}}
+{{--                                                        <div class="text-danger">De-Active</div>--}}
+{{--                                                    @endif--}}
+
+{{--                                                    <div if></div>--}}
+{{--                                                </td>--}}
                                         @endforeach
                                         </tbody>
                                         <tfoot>
@@ -46,6 +69,10 @@
                                     </table>
                                 </div>
                             </div>
+
+
+
+
 
 
 

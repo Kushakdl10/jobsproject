@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row">
                 <!-- left column -->
-                {{--                <div class="col-md-9">--}}
+                                <div class="col-md-9">
                 <!-- general form elements -->
                 <div class="card card-primary">
                     <div class="card-header">
@@ -25,8 +25,9 @@
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending">job_id</th>
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending">skill_id</th>
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">status</th>
-                                        {{--                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Engine version</th>--}}
-                                        {{--                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">CSS grade</th></tr>--}}
+                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Action</th>
+
+
                                         </thead>
                                         <tbody>
                                         <tr class="odd">
@@ -34,9 +35,32 @@
                                             <tr class="odd">
                                                 <td class="dtr-control sorting_1" >{{$cat->id}}</td>
 
-                                                <td>{{$cat->job_id}}</td>
-                                                <td>{{$cat->skill_id}}</td>
-                                                <td>{{$cat->status}}</td>
+                                                <td>{{$cat->Jobs->title}}</td>
+                                                <td>{{$cat->Skills->skills_name}}</td>
+
+                                                <td>
+                                                    @if($cat->status ===1)
+                                                        <div class="text-success">Active</div>
+                                                    @endif
+
+                                                        @if($cat->status ===0)
+                                                            <div class="text-danger">De-Active</div>
+                                                        @endif
+
+                                                    <div if></div>
+                                                </td>
+
+                                                <td>
+
+                                                    <a  href="{{route('jobSkills.show',$cat->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-pencil-alt" aria-hidden="true"></i></a>
+
+                                                    <form action="{{route('jobSkills.destroy',$cat->id)}}" method="post" class="d-inline">
+                                                        <input type="hidden" name="_method" value="delete" />
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></button>
+
+                                                    </form>
+                                                </td>
                                         @endforeach
                                         </tbody>
                                         <tfoot>
@@ -57,7 +81,7 @@
                         <!-- Horizontal Form -->
                         <!-- /.card -->
 
-                        {{--                </div>--}}
+                                        </div>
                         <!--/.col (left) -->
                         <!-- right column -->
                     </div>

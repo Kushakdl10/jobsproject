@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\applications;
+use App\Models\Job;
 use App\Models\skills;
+use App\Models\userSkills;
 use Illuminate\Http\Request;
 
 class userSkillscontroller extends Controller
@@ -12,8 +15,8 @@ class userSkillscontroller extends Controller
      */
     public function index()
     {
-        $data= userSkills::all();
-        return view('userSkills.index',compact('data'));
+        $data= UserSkills::with('User','Skill')->get();
+        return view('UserSkills.index',compact('data'));
     }
 
     /**
@@ -21,8 +24,9 @@ class userSkillscontroller extends Controller
      */
     public function create()
     {
-        return view('userSkills.create');
-        //
+        $user=Job::all()->pluck('title','id');
+        $skills=Skills::all()->pluck('skills_name','id');
+        return view('JobSkills.create',compact('user','skills'));
     }
 
     /**
@@ -30,13 +34,13 @@ class userSkillscontroller extends Controller
      */
     public function store(Request $request)
     {
-        $data = userSkills::create([
+        $data = UserSkills::create([
             'skill_id'=>$request->skill_id,
             'users_id'=>$request->users_id,
             'status'=>$request->status
         ]);
         if ($data){
-            return redirect()->route('userSkills.index');
+            return redirect()->route('UserSkills.index');
 //            return view('Skills.index')->with('success','skill added');
         }else{
             return redirect()->back()->with('error','something went wrong');
@@ -51,8 +55,10 @@ class userSkillscontroller extends Controller
     public function show(string $id)
     {
 
+        $userSkills=UserSkills::find($id);
 
-        //
+        return view('UserSkills.edit', compact('userSkills'));
+
     }
 
     /**
@@ -68,7 +74,13 @@ class userSkillscontroller extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $UserSkills=UserSkills::find($request->id);
+        $UserSkills->update([
+            'skill_id'=>$request->skill_id,
+            'users_id'=>$request->users_id
+
+        ]);
+        return redirect()->route('UserSkills.index')->with('success','UserSkills added success fully');
     }
 
     /**
@@ -76,6 +88,9 @@ class userSkillscontroller extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $userSkills= UserSkills::findOrFail($id);
+        $userSkills->delete();
+
+        return redirect()->route('UserSkills.index')->with('success', 'UserSkills deleted successfully.');
     }
 }

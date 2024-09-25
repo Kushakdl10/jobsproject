@@ -18,8 +18,8 @@
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="recommendation Id">Application Id</label>
-                                    <input type="text" class="form-control" id="recommendation Id" name=recommendation Id" placeholder=" Recommendation Id">
+                                    <label for="recommendation">Application Id</label>
+                                    <input type="text" class="form-control" id="recommendation" name=recommendation" placeholder=" RecommendationId">
                                 </div>
                                 <div class="form-group">
                                     <label for="User_Id">User Id</label>

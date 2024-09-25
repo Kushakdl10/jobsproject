@@ -13,5 +13,7 @@ class Skills extends Model
         'skills_name',
         'status',
     ];
+
+    protected $table='Skills';
 }
 

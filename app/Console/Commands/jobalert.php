@@ -2,7 +2,10 @@
 
 namespace App\Console\Commands;
 
+use App\Models\applications;
+use App\Models\recommendation;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 
 class jobalert extends Command
@@ -26,11 +29,32 @@ class jobalert extends Command
      */
     public function handle()
     {
-            $user=User::where('is_Admin',0)->get();
+        $users = applications::where('created_at', '<', Carbon::now()->subDay())->get();
 
-
-
-
-        //
+        foreach($users as $user) {
+            recommendation::create([
+                'user_id' => $user->users_id,
+                'status' => 0
+            ]);
+        }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //
+
 }

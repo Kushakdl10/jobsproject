@@ -6,7 +6,7 @@ use App\Models\recommendation;
 use App\Models\skills;
 use Illuminate\Http\Request;
 
-class recommendationcontroller extends Controller
+class Recommendationcontroller extends Controller
 {
     /**
      * Display a listing of the resource.

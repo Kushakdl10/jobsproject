@@ -10,54 +10,29 @@
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Applications</h3>
+                            <h3 class="card-title">Skills</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{route('Applications.store')}}"  method="post">
+                        <form action="{{route('Skills.update',$skills->id)}}" method="post">
                             @csrf
+                            @method('PUT')
                             <div class="card-body">
-{{--                                <div class="form-group">--}}
-{{--                                    <label for="Application_Id">Application Id</label>--}}
-{{--                                    <input type="text" class="form-control" id="application_id" name="Application_Id" placeholder=" Enter Application Id">--}}
-{{--                                </div>--}}
-                                <div class="form-group">
-                                    <label for="Status">User</label>
-                                    <select name="user_id" id="user_id" class="form-control">
-                                        @foreach($user as $i=> $u)
-                                        <option value="{{$i}}">{{$u}}</option>
 
-                                        @endforeach
-                                    </select>
-                                </div>
-{{--                                <div class="form-group">--}}
-{{--                                    <label for="Job_Id">Job Id</label>--}}
-{{--                                    <input type="text" class="form-control" id="Job_Id" name="Job_Id" placeholder="Enter Job Id">--}}
-{{--                                </div>--}}
 
                                 <div class="form-group">
-                                    <label for="Status">Job</label>
-                                    <select name="job_id" id="job_id" class="form-control">
-                                        {{$jobs}}
-                                        @foreach($jobs as $id=>$j)
-                                            <option value="{{$id}}">{{$j}}</option>
-
-                                        @endforeach
-                                    </select>
+                                    <label for="skills_name">skills name</label>
+                                    <input type="text" class="form-control" id="skills_name" name="skills_name" placeholder="skills name" value="{{old('skills_name', $skills->skills_name)}}">
                                 </div>
 
-
-{{--                                <div class="form-group">--}}
-{{--                                    <label for="Applied_At">Applied At</label>--}}
-{{--                                    <input type="text" class="form-control" id="Applied_At" name="Applied_At" placeholder="Applied At">--}}
-{{--                                </div>--}}
-
                                 <div class="form-group">
-                                    <label for="Status">Status</label>
+
+                                    <label for="transaction_type">Status</label>
+
                                     <select name="status" id="status" class="form-control">
-                                        <option value=0>begginer</option>
-                                        <option value=1>intermediate</option>
-                                        <option value=2>proffesional</option>
+                                        <option value="begginer">begginer</option>
+                                        <option value="intermediate">intermediate</option>
+                                        <option value="proffesional">proffesional</option>
                                     </select>
                                 </div>
 
@@ -81,7 +56,7 @@
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">update</button>
                             </div>
                         </form>
                     </div>
@@ -96,3 +71,4 @@
         </div><!-- /.container-fluid -->
     </section>
 @endsection
+

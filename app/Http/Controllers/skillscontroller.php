@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Job;
 use App\Models\Skills;
 use App\Http\Requests\SkillsRequest;
 use Illuminate\Http\Request;
@@ -49,7 +50,8 @@ class SkillsController extends Controller
      */
     public function show($id)
     {
-        //
+        $skills=Skills::find($id);
+        return view('Skills.edit', compact('skills'));
     }
 
     /**
@@ -65,7 +67,12 @@ class SkillsController extends Controller
      */
     public function update(Request $request,  $id)
     {
-        //
+        $skills=Skills::find($request->id);
+        $skills->update([
+            'skills_name' => $request->skills_name,
+            'status' => $request->status
+        ]);
+        return redirect()->route('Skills.index')->with('success','Skills added success fully');
     }
 
     /**
@@ -73,6 +80,9 @@ class SkillsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $skills= Skills::findOrFail($id);
+        $skills->delete();
+
+        return redirect()->route('Skills.index')->with('success', 'job deleted successfully.');
     }
 }

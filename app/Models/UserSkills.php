@@ -13,4 +13,17 @@ class userSkills extends Model
         'users_id',
         'status'
     ];
+
+
+    protected $table = 'userSkills';
+
+    public function Skill(){
+        return $this->belongsTo(skills::class, 'skill_id');
+    }
+
+    public function User()
+    {
+        return $this->belongsTo(User::class, 'users_id');
+
+    }
 }

@@ -16,8 +16,8 @@ class jobskillscontroller extends Controller
      */
     public function index()
     {
-        $data= JobSkills::all();
-        return view('jobSkills.index',compact('data'));
+        $data= JobSkills::with('Jobs','Skills')->get();
+        return view('JobSkills.index',compact('data'));
     }
 
     /**
@@ -25,9 +25,9 @@ class jobskillscontroller extends Controller
      */
     public function create()
     {
-        $skills=Skills::all()->pluck('skills_name','id');
         $jobs=Job::all()->pluck('title','id');
-        return view('jobskills.create',compact('skills','jobs'));
+        $skills=Skills::all()->pluck('skills_name','id');
+        return view('JobSkills.create',compact('jobs','skills'));
     }
 
     /**
@@ -35,16 +35,26 @@ class jobskillscontroller extends Controller
      */
     public function store(Request $request)
     {
-        $data = JobSkills::create([
-            'job_id'=>$request->job_id,
-            'skill_id'=>$request->skill_id,
-            'status'=>$request->status
-        ]);
-        if ($data){
-            return redirect()->route('JobSkills.index');
-        }else{
-            return redirect()->back()->with('error','something went wrong');
-        }
+      try{
+
+//          dd($request->all());
+
+          $data =JobSkills::create([
+              'job_id'=>$request->job_id,
+              'skill_id'=>$request->skill_id,
+              'status'=>$request->status
+          ]);
+          if ($data){
+              return redirect()->route('JobSkills.index');
+          }else{
+              return redirect()->back()->with('error','something went wrong');
+          }
+
+      }
+catch (\Exception $exception){
+          dd($exception);
+}
+
 
     }
 
@@ -70,7 +80,15 @@ class jobskillscontroller extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $jobskills=jobSkills::find($request->id);
+        $jobskills->update([
+            'job_id'=>$request->job_id,
+
+            'skill_id'=>$request->skill_id,
+            'status'=>$request->status
+
+        ]);
+        return redirect()->route('JobSkills.index')->with('success','jobskills added success fully');
     }
 
     /**
@@ -78,6 +96,9 @@ class jobskillscontroller extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $jobskills= jobSkills::findOrFail($id);
+        $jobskills->delete();
+
+        return redirect()->route('JobSkills.index')->with('success', 'jobskills deleted successfully.');
     }
 }

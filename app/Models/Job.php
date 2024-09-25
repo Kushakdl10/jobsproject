@@ -14,7 +14,6 @@ class Job extends Model
         'description',
         'company',
         'location',
-        'user_id',
         'status'
     ];
 

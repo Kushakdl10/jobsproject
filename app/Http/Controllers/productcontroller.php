@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\applications;
 use App\Models\Job;
 use App\Models\Skills;
+use Illuminate\Console\Application;
 use Illuminate\Http\Request;
 
-class productcontroller extends Controller
+class Productcontroller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,7 +36,7 @@ class productcontroller extends Controller
 
         $data = Job::create([
             'title'=>$request->title,
-            'description'=>$request->job_description,
+            'description'=>$request->description,
             'company'=>$request->company,
             'location'=>$request->location
         ]);
@@ -50,9 +51,10 @@ class productcontroller extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show( $id)
     {
-        //
+        $job=Job::find($id);
+        return view('product.edit', compact('job'));
     }
 
     /**
@@ -66,16 +68,27 @@ class productcontroller extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        $job=Job::find($request->id);
+        $job->update([
+            'title'=>$request->title,
+            'description'=>$request->description,
+            'company'=>$request->company,
+            'location'=>$request->location
+        ]);
+        return redirect()->route('product.index')->with('success','job added success fully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy( $id)
     {
-        //
+        $product= Job::findOrFail($id);
+        $product->delete();
+
+        return redirect()->route('product.index')->with('success', 'job deleted successfully.');
+
     }
 }
